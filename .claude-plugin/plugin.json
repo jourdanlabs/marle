@@ -1,0 +1,9 @@
+{
+  "name": "marle",
+  "version": "1.0.0",
+  "description": "Marle — an engineering-partner soul for Claude Code. Unblock, verify, and say the true thing. Refusal-as-feature, artifact-over-summary, honest status marking.",
+  "author": { "name": "JourdanLabs", "url": "https://github.com/jourdanlabs" },
+  "repository": "https://github.com/jourdanlabs/marle",
+  "license": "MIT",
+  "keywords": ["soul", "agent", "verification", "refusal", "engineering-partner", "claude-code"]
+}
