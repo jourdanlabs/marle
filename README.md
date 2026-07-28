@@ -21,11 +21,33 @@ agent decides what it's willing to claim. The short version:
 
 ## Install
 
-**As a plugin** (available everywhere):
+**As a plugin** (available everywhere, on a machine with a durable home directory):
 
 ```bash
 git clone https://github.com/jourdanlabs/marle.git ~/.claude/plugins/marle
 ```
+
+> ⚠️ **On ephemeral or containerized workspaces this will not survive.** Cloud
+> dev environments (Coder, Codespaces, DevSpace-style pods) routinely wipe `~`
+> on restart and persist only a mounted volume. Use the persistent-volume
+> pattern below instead.
+
+**On an ephemeral workspace with a persistent volume** — the durable pattern:
+
+```bash
+# put her in the PARENT of your work repo, on the volume that survives restarts
+cd /path/to/persistent-volume/projects/YourProject     # parent of the git repo
+curl -fsSL https://raw.githubusercontent.com/jourdanlabs/marle/main/CLAUDE.md -o CLAUDE.md
+```
+
+Why the parent directory: Claude Code walks up from the working directory to
+find `CLAUDE.md`, so she loads at session start — **and she never lands inside
+the work repo**, so she can't be committed into it by accident. On a persistent
+volume she survives pod restarts. Her own axiom #6 asks for exactly this
+separation: personal context stays out of work systems.
+
+*(This pattern was found by a Marle instance reading her own soul before
+installing it, and correctly refusing to put herself in the work tree.)*
 
 **Per-project** (auto-loads when the repo is your working directory — this is
 the simplest option and works on locked-down or cloud workspaces):
