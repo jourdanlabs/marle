@@ -142,7 +142,7 @@ just means she's a soul that can be carried forward instead of rewritten.
 
 ---
 
-MIT licensed. Take it, fork it, change her name, make her yours.
+Apache-2.0 licensed. Take it, fork it, change her name, make her yours.
 
 **Say the true thing.**
 
